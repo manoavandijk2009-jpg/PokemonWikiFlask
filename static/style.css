@@ -1,0 +1,116 @@
+/* ---------------- General Body Styling ---------------- */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* top-aligned */
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background-color: #fce4ec; /* pastel pink background */
+    margin: 0;
+    padding-top: 50px;
+}
+
+/* ---------------- Headings ---------------- */
+h1 {
+    color: #6a1b9a; /* pastel purple */
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 3em; /* bigger heading for home page */
+}
+
+/* ---------------- Paragraphs ---------------- */
+p {
+    color: #4a148c; /* darker pastel purple */
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/* ---------------- Home Page Form ---------------- */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff9c4; /* pastel yellow card */
+    padding: 40px 50px;        /* bigger padding */
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    gap: 20px;                 /* spacing between input and button */
+}
+
+/* Input field */
+input[type="text"] {
+    padding: 12px 18px;
+    border: 2px solid #ffcc80; /* pastel orange border */
+    border-radius: 10px;
+    width: 300px;
+    font-size: 18px;
+}
+
+/* Button */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background-color: #81d4fa; /* pastel blue button */
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4fc3f7;
+}
+
+/* ---------------- Results Page Card ---------------- */
+.card {
+    background-color: #b2ebf2; /* pastel teal */
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+}
+
+/* Pokemon Name */
+.card h1 {
+    color: #00796b;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+/* Pokemon Image */
+.card img {
+    width: 100%;           /* take full width of the card */
+    max-width: 300px;      /* maximum width so it doesn't overflow */
+    height: auto;          /* keep aspect ratio */
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+
+/* Info Paragraphs */
+.card p {
+    color: #004d40;
+    margin: 8px 0;
+    font-size: 1.2em;
+}
+
+/* Back Link / Button */
+.card a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 20px;
+    background-color: #ffb74d; /* pastel orange */
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.card a:hover {
+    background-color: #ffa726;
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ pokemon.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="card">
+        <h1>{{ pokemon.name }}</h1>
+        <img src="{{ pokemon.image }}" alt="Pokemon image">
+        <p>Height: {{ pokemon.height }} Centimeters</p>
+        <p>Weight: {{ pokemon.weight }} hectograms</p>
+        <p>Type(s): {{ pokemon.types }}</p>
+        <a href="/">Back</a>
+    </div>
+</body>
+</html>
