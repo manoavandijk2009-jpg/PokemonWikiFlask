@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pokemon Finder</title>
+    <title>Pokemon Wiki</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>Pokemon Wiki</h1>
 
     <form action="/pokemon" method="get">
-        <input type="text" name="name" placeholder="Enter Pokemon name" required>
+        <input type="text" name="name" placeholder="Enter Pokemon name or ID number" required>
         <button type="submit">Search</button>
     </form>
 </body>
