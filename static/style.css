@@ -81,6 +81,12 @@ button:hover {
     font-size: 2.5em;
 }
 
+/* Pokemon ID */
+.card h2 {
+    color: #00796b;
+    margin-bottom: 20px;
+}
+
 /* Pokemon Image */
 .card img {
     width: 100%;           /* take full width of the card */

@@ -18,12 +18,13 @@ def pokemon():
     response = requests.get(url)
 
     if response.status_code != 200:
-        return "Pokemon not found"
+        return "Pokemon not found or u just made a spelling mistake D:"
 
     data = response.json()
 
     pokemon_data = {
         "name": data["name"].title(),
+        "id": data["id"],
         "height": data["height"],
         "weight": data["weight"],
         "types": ", ".join([t["type"]["name"] for t in data["types"]]),
