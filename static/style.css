@@ -1,4 +1,4 @@
-/* ---------------- General Body Styling ---------------- */
+/* Body Style */
 body {
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@ body {
     padding-top: 50px;
 }
 
-/* ---------------- Headings ---------------- */
+/* Headings */
 h1 {
     color: #6a1b9a; /* pastel purple */
     margin-bottom: 15px;
@@ -19,7 +19,7 @@ h1 {
     font-size: 3em; /* bigger heading for home page */
 }
 
-/* ---------------- Paragraphs ---------------- */
+/* Paragraphs */
 p {
     color: #4a148c; /* darker pastel purple */
     margin-bottom: 15px;
@@ -27,7 +27,7 @@ p {
     font-size: 1.2em;
 }
 
-/* ---------------- Home Page Form ---------------- */
+/*  Home Page  */
 form {
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@ button:hover {
     background-color: #4fc3f7;
 }
 
-/* -------6--------- Results Page Card ---------------- */
+/* Results Page */
 .card {
     background-color: #b2ebf2; /* pastel teal */
     padding: 40px 50px;
