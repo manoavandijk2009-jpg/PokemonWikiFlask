@@ -12,13 +12,19 @@ def pokemon():
     name = request.args.get("name")
 
     if not name:
-        return "No Pokemon name provided"
+        return "No Pokémon name provided."
 
     url = f"https://pokeapi.co/api/v2/pokemon/{name.lower()}"
-    response = requests.get(url)
 
-    if response.status_code != 200:
-        return "Pokemon not found or u just made a spelling mistake D:"
+    try:
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError:
+        return "Pokémon not found or spelling mistake D:"
+    except requests.exceptions.Timeout:
+        return "Request timed out. Please try again."
+    except requests.exceptions.RequestException:
+        return "Error fetching Pokémon data. Try again later."
 
     data = response.json()
 
@@ -34,4 +40,6 @@ def pokemon():
     return render_template("results.html", pokemon=pokemon_data)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Use host 0.0.0.0 and port from environment for Render
+    import os
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
