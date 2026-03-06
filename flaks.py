@@ -28,13 +28,17 @@ def pokemon():
 
     data = response.json()
 
+    height_m = float(data["height"]) / 10
+    weight_kg = float(data["weight"]) / 10
+
     pokemon_data = {
         "name": data["name"].title(),
         "id": data["id"],
-        "height": data["height"],
-        "weight": data["weight"],
+        "base_xp": data["base_experience"],
+        "height": height_m,
+        "weight": weight_kg,
         "types": ", ".join([t["type"]["name"] for t in data["types"]]),
-        "image": data["sprites"]["front_default"]
+        "image": data["sprites"]["versions"]["generation-viii"]["brilliant-diamond-shining-pearl"]["front_default"]
     }
 
     return render_template("results.html", pokemon=pokemon_data)
