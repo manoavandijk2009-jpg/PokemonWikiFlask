@@ -17,6 +17,7 @@ h1 {
     margin-bottom: 15px;
     text-align: center;
     font-size: 3em; /* bigger heading for home page */
+    font-family: 'Fredoka', sans-serif;
 }
 
 /* Paragraphs */
@@ -25,6 +26,7 @@ p {
     margin-bottom: 15px;
     text-align: center;
     font-size: 1.2em;
+    font-family: 'Fredoka', sans-serif;
 }
 
 /*  Home Page  */
@@ -37,6 +39,7 @@ form {
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     gap: 20px;                 /* spacing between input and button */
+    font-family: 'Fredoka', sans-serif;
 }
 
 /* Input field */
@@ -46,6 +49,7 @@ input[type="text"] {
     border-radius: 10px;
     width: 300px;
     font-size: 18px;
+    font-family: 'Fredoka', sans-serif;
 }
 
 /* Button */
@@ -72,6 +76,7 @@ button:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400px;
+    font-family: 'Fredoka', sans-serif;
 }
 
 /* Pokemon Name */
@@ -85,6 +90,7 @@ button:hover {
 .card h2 {
     color: #00796b;
     margin-bottom: 20px;
+    font-family: 'Fredoka', sans-serif;
 }
 
 /* Pokemon Image */
@@ -94,6 +100,7 @@ button:hover {
     height: auto;          /* keep aspect ratio */
     border-radius: 12px;
     margin-bottom: 25px;
+    font-family: 'Fredoka', sans-serif;
 }
 
 
@@ -102,6 +109,7 @@ button:hover {
     color: #004d40;
     margin: 8px 0;
     font-size: 1.2em;
+    font-family: 'Fredoka', sans-serif;
 }
 
 /* Back Link / Button */
@@ -115,8 +123,10 @@ button:hover {
     border-radius: 10px;
     font-size: 1.1em;
     transition: background-color 0.3s;
+    font-family: 'Fredoka', sans-serif;
 }
 
 .card a:hover {
     background-color: #ffa726;
+    font-family: 'Fredoka', sans-serif;
 }

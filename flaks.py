@@ -31,6 +31,23 @@ def pokemon():
     height_m = float(data["height"]) / 10
     weight_kg = float(data["weight"]) / 10
 
+    # 1️⃣ Try Gen VIII Brilliant Diamond/Shining Pearl first
+    bd_sp_sprite = data["sprites"]["versions"]["generation-viii"]["brilliant-diamond-shining-pearl"]["front_default"]
+
+    # 2️⃣ Official artwork
+    artwork_sprite = data["sprites"]["other"]["official-artwork"]["front_default"]
+
+    # 3️⃣ Older versions fallback (Gen I → Gen VII)
+    old_generations = []
+    for gen in data["sprites"]["versions"]:
+        for version in data["sprites"]["versions"][gen]:
+            sprite = data["sprites"]["versions"][gen][version].get("front_default")
+            if sprite:
+                old_generations.append(sprite)
+
+    # 4️⃣ Fallback priority: BD/SP → artwork → oldest available version
+    fallback_sprite = bd_sp_sprite or artwork_sprite or (old_generations[0] if old_generations else data["sprites"]["front_default"])
+
     pokemon_data = {
         "name": data["name"].title(),
         "id": data["id"],
@@ -38,7 +55,7 @@ def pokemon():
         "height": height_m,
         "weight": weight_kg,
         "types": ", ".join([t["type"]["name"] for t in data["types"]]),
-        "image": data["sprites"]["versions"]["generation-viii"]["brilliant-diamond-shining-pearl"]["front_default"]
+        "image": fallback_sprite
     }
 
     return render_template("results.html", pokemon=pokemon_data)
