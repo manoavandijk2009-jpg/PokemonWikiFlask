@@ -5,15 +5,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="card">
-        <h1>{{ pokemon.name }}</h1>
-        <h2>#{{ pokemon.id }}</h2>
-        <img src="{{ pokemon.image }}" alt="Pokemon image">
-        <p>Base XP: {{ pokemon.base_xp }}</p>
-        <p>Height: {{ pokemon.height }} Meters</p>
-        <p>Weight: {{ pokemon.weight }} Kilograms</p>
-        <p>Type(s): {{ pokemon.types }}</p>
-        <a href="/">Back</a>
+<div class="card">
+    <h1>{{ pokemon.name }}</h1>
+    <h2>#{{ pokemon.id }}</h2>
+
+    <div class="hover-image">
+        <img class="normal" src="{{ pokemon.image }}" alt="Normal Pokemon image">
+        <img class="shiny" src="{{ pokemon.shiny_image }}" alt="Shiny Pokemon image">
     </div>
+
+    <p>Base XP: {{ pokemon.base_xp }}</p>
+    <p>Height: {{ pokemon.height }} Meters</p>
+    <p>Weight: {{ pokemon.weight }} Kilograms</p>
+    <p>Type(s): {{ pokemon.types }}</p>
+    <a href="/">Back</a>
+</div>
 </body>
 </html>

@@ -130,3 +130,33 @@ button:hover {
     background-color: #ffa726;
     font-family: 'Fredoka', sans-serif;
 }
+
+/* Hover effect: normal image switches to shiny */
+.hover-image {
+    position: relative;
+    width: 200px;      /* adjust as needed */
+    height: 200px;
+    margin: 0 auto 20px;
+}
+
+.hover-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.hover-image img.shiny {
+    opacity: 0;          /* hide shiny by default */
+}
+
+.hover-image:hover img.shiny {
+    opacity: 1;          /* show shiny on hover */
+}
+
+.hover-image:hover img.normal {
+    opacity: 0;          /* hide normal on hover */
+}

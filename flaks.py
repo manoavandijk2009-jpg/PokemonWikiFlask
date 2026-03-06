@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -31,23 +32,34 @@ def pokemon():
     height_m = float(data["height"]) / 10
     weight_kg = float(data["weight"]) / 10
 
-    # 1️⃣ Try Gen VIII Brilliant Diamond/Shining Pearl first
-    bd_sp_sprite = data["sprites"]["versions"]["generation-viii"]["brilliant-diamond-shining-pearl"]["front_default"]
+    # --- SPRITE LOGIC ---
 
-    # 2️⃣ Official artwork
-    artwork_sprite = data["sprites"]["other"]["official-artwork"]["front_default"]
+    # 1️⃣ Official artwork (priority)
+    artwork_sprite = data["sprites"]["other"]["official-artwork"].get("front_default")
+    artwork_shiny = data["sprites"]["other"]["official-artwork"].get("front_shiny")
 
-    # 3️⃣ Older versions fallback (Gen I → Gen VII)
+    # 2️⃣ Generation VIII BD/SP sprites
+    bd_sp_sprite = data["sprites"]["versions"]["generation-viii"]["brilliant-diamond-shining-pearl"].get("front_default")
+    bd_sp_shiny = data["sprites"]["versions"]["generation-viii"]["brilliant-diamond-shining-pearl"].get("front_shiny")
+
+    # 3️⃣ Older generations fallback
     old_generations = []
+    old_generations_shiny = []
     for gen in data["sprites"]["versions"]:
         for version in data["sprites"]["versions"][gen]:
-            sprite = data["sprites"]["versions"][gen][version].get("front_default")
+            v = data["sprites"]["versions"][gen][version]
+            sprite = v.get("front_default")
+            sprite_shiny = v.get("front_shiny")
             if sprite:
                 old_generations.append(sprite)
+            if sprite_shiny:
+                old_generations_shiny.append(sprite_shiny)
 
-    # 4️⃣ Fallback priority: BD/SP → artwork → oldest available version
-    fallback_sprite = bd_sp_sprite or artwork_sprite or (old_generations[0] if old_generations else data["sprites"]["front_default"])
+    # 4️⃣ Final fallback: official artwork → BD/SP → old generations → root default
+    fallback_sprite = artwork_sprite or bd_sp_sprite or (old_generations[0] if old_generations else data["sprites"].get("front_default"))
+    fallback_shiny = artwork_shiny or bd_sp_shiny or (old_generations_shiny[0] if old_generations_shiny else data["sprites"].get("front_shiny"))
 
+    # --- POKEMON DATA ---
     pokemon_data = {
         "name": data["name"].title(),
         "id": data["id"],
@@ -55,12 +67,11 @@ def pokemon():
         "height": height_m,
         "weight": weight_kg,
         "types": ", ".join([t["type"]["name"] for t in data["types"]]),
-        "image": fallback_sprite
+        "image": fallback_sprite,
+        "shiny_image": fallback_shiny
     }
 
     return render_template("results.html", pokemon=pokemon_data)
 
 if __name__ == "__main__":
-    # Use host 0.0.0.0 and port from environment for Render
-    import os
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
