@@ -32,17 +32,17 @@ def pokemon():
     height_m = float(data["height"]) / 10
     weight_kg = float(data["weight"]) / 10
 
-    # --- SPRITE LOGIC ---
 
-    # 1️⃣ Official artwork (priority)
+
+    # 1️ Official artwork (priority)
     artwork_sprite = data["sprites"]["other"]["official-artwork"].get("front_default")
     artwork_shiny = data["sprites"]["other"]["official-artwork"].get("front_shiny")
 
-    # 2️⃣ Generation VIII BD/SP sprites
+    # 2️ Generation VIII BD/SP sprites
     bd_sp_sprite = data["sprites"]["versions"]["generation-viii"]["brilliant-diamond-shining-pearl"].get("front_default")
     bd_sp_shiny = data["sprites"]["versions"]["generation-viii"]["brilliant-diamond-shining-pearl"].get("front_shiny")
 
-    # 3️⃣ Older generations fallback
+    # 3️ Older generations fallback
     old_generations = []
     old_generations_shiny = []
     for gen in data["sprites"]["versions"]:
@@ -55,7 +55,7 @@ def pokemon():
             if sprite_shiny:
                 old_generations_shiny.append(sprite_shiny)
 
-    # 4️⃣ Final fallback: official artwork → BD/SP → old generations → root default
+    # 4️ Final fallback: official artwork
     fallback_sprite = artwork_sprite or bd_sp_sprite or (old_generations[0] if old_generations else data["sprites"].get("front_default"))
     fallback_shiny = artwork_shiny or bd_sp_shiny or (old_generations_shiny[0] if old_generations_shiny else data["sprites"].get("front_shiny"))
 
@@ -74,4 +74,5 @@ def pokemon():
     return render_template("results.html", pokemon=pokemon_data)
 
 if __name__ == "__main__":
+
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
